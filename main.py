@@ -10,9 +10,9 @@ app = FastAPI()
 app.include_router(user_router)
 
 #to create db
-if not os.path.exists("./test.db"):
-   engine =create_engine(DATABASE_URL)
-   Base.metadata.create_all(engine)
+engine =create_engine(DATABASE_URL)
+Base.metadata.create_all(engine)
+
 
 @app.get("/")
 def read_root():
@@ -20,4 +20,4 @@ def read_root():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="[IP_ADDRESS]", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=8000)
